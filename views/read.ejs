@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <div class="h-full w-full bg-zinc-900 p-10 text-white">
+        <div class="nav mb-3">
+            <a class="text-yellow-300 " href="/"> To Add More Users</a>
+        </div>
+        <h1 class="text-3xl mb-3 tracking-tighter">All Users</h1>
+        <div class="users flex gap-4 flex-wrap">
+            <% if(users.length > 0){ %>
+                <% users.forEach(function(user){ %>
+                <div class="user max-w-72 p-4 bg-zinc-800 rounded-lg">
+                <div class="w-full h-52 p-4 bg-zinc-500 rounded-lg mb-2 objectflow-hidden">
+                    <img class="w-full h-full object-cover" src="<%= user.ImageUrl %>" alt="">
+                </div>
+                <h3 class="text-2xl tracking-tighter"><%= user.Name %></h3>
+                <h5 class="text-zinc-500 text-sm"><%= user.Email %></h5>
+                <div class="">
+                    <a class="text-blue-300" href="/edit/<%= user._id %>">Edit User</a>
+                    <a class="text-red-500" href="/delete/<%= user._id %>">Delete</a>
+                </div>
+            </div>
+            <% }) %>
+            <% } else{ %>
+                <h3 class="text-zinc-500">No Users Yet</h3>
+            <% } %>
+            
+        </div>
+    </div>
+    <script src="/javascript/script.js"></script>
+</body>
+
+</html>
